@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!--e2jw2j--><!----><title>#4471 · dates split by cause · support kb</title>
+		<style>
+:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#6b6a66;--line:#e3e0d8;--accent:#2f6f5e;--warn:#b4501f;--warn-bg:#fbeee6;--note-bg:#eef5f2;--mono:ui-monospace, "Cascadia Code", Menlo, monospace}@media (prefers-color-scheme:dark){:root{--bg:#171716;--fg:#ecebe6;--muted:#9c9a93;--line:#34332f;--accent:#6fbfa6;--warn:#f0905d;--warn-bg:#3a2418;--note-bg:#1d2c27}}body{background:var(--bg);color:var(--fg);margin:0;font:16px/1.6 system-ui,sans-serif}.kb table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}.kb th,.kb td{border-bottom:1px solid var(--line);text-align:left;vertical-align:top;padding:.45rem .55rem}.kb code{font-family:var(--mono);font-size:.88em}.kb.svelte-e2jw2j{max-width:900px;margin:0 auto;padding:2rem 16px 4rem}.crumb.svelte-e2jw2j{font:.8rem var(--mono);color:var(--muted);text-decoration:none}h1.svelte-e2jw2j{margin:.25rem 0 .5rem;line-height:1.2}.meta.svelte-e2jw2j{color:var(--muted);flex-wrap:wrap;gap:.5rem 1rem;margin:0;font-size:.85rem;display:flex}.status.svelte-e2jw2j{border:1px solid var(--line);border-radius:99px;padding:0 .6rem}.stale.svelte-e2jw2j{color:var(--warn);font-weight:600}.banner.svelte-e2jw2j{background:var(--warn-bg);color:var(--warn);border-radius:6px;padding:.6rem 1rem}footer.svelte-e2jw2j{color:var(--muted);border-top:1px solid var(--line);margin-top:3rem;padding-top:1rem;font-size:.8rem}@media (width<=760px){.kb main{overflow-x:auto}}.sum.svelte-xskqqx{font-size:1.05rem}.rule.svelte-xskqqx,.note.svelte-xskqqx{color:var(--muted);font-size:.88em}.note.svelte-xskqqx{margin-top:1rem}.stamp.svelte-1280m42{font:.85rem var(--mono);color:var(--muted);margin:2rem 0 0}.stamp.svelte-1280m42 b:where(.svelte-1280m42){color:var(--accent);letter-spacing:.04em}.missing.svelte-1280m42{color:var(--warn)}
+
+</style>
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[--><!--[0--><!--[--><!--[--><!--[-1--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 · dates split by cause</h1> <p class="meta svelte-e2jw2j"><span>owner <b>support desk</b></span> <span class="status svelte-e2jw2j">known</span> <span class="svelte-e2jw2j">reviewed 2026-10-30 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p>Since April, reports about dates landing on the wrong day were merged into ticket #4471.
+The export contains three distinguishable problems, not one.</p> <p class="sum svelte-xskqqx"><strong>427</strong> export rows · <strong>412</strong> unique reports · <strong>15</strong> duplicate rows removed by report ID.</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>channels</th><th>intake tags</th><th>first → last seen</th></tr></thead><tbody><!--[--><tr><td><strong>parser</strong><br/><span class="rule svelte-xskqqx">Day-first tenant; not a booking-v3 form entry or a documented one-day move.</span></td><td>374</td><td>11</td><td>app ×202 · email ×147 · form ×25</td><td>hint ×23 · parser ×351</td><td>2026-04-01 → 2026-10-04</td></tr><tr><td><strong>hint</strong><br/><span class="rule svelte-xskqqx">Booking-v3 form entry from a day-first tenant; the form hint and parser use opposite date orders.</span></td><td>33</td><td>3</td><td>form ×33</td><td>hint ×18 · parser ×15</td><td>2026-04-17 → 2026-09-22</td></tr><tr><td><strong>one-day</strong><br/><span class="rule svelte-xskqqx">Identified separately in the desk notes; the observed symptom is a one-day move, not a swap.</span></td><td>5</td><td>5</td><td>app ×2 · email ×3</td><td>parser ×5</td><td>2026-04-02 → 2026-10-04</td></tr><!--]--></tbody></table> <p class="note svelte-xskqqx">Intake disagrees with the KB's parser/hint rule for 38 reports, and with the final three-problem assignment for 43. Body reading: one-day 5 · swap 403 · unread 4.</p><!----> <h2>What the split means</h2> <ul><li><strong>Parser:</strong> the shared parser reads month first, while the tenant writes day first.</li> <li><strong>Hint:</strong> the booking-v3 form shows month first, but the form reads it day first. This
+requires a different fix from the shared parser.</li> <li><strong>One-day move:</strong> the desk notes describe reports with a one-day shift. They support
+treating these separately, but do not establish the underlying mechanism.</li></ul> <p>The current KB rule folds the one-day-move reports into the parser group. Some additional
+reports have no date pair in their body; those are assigned by tenant and form rule, and
+are not counted as clean body-proven swaps.</p> <p>The published projection omits report subjects, report bodies, and tenant names. Tenant
+keys are pseudonymous; counts and date ranges are computed from the sanitized records.</p> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-RRA2-02NY</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables are built from data at render time.</footer></div><!--]--><!--]--><!--]--><!----><!--]--><!--]--><!--]--><!----> <!--[-1--><!--]--><!--]-->
+			
+			
+		</div>
+  </body>
+</html>

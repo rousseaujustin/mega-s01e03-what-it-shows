@@ -1,0 +1,37 @@
+---
+layout: runbook
+title: '#4471 · dates split by cause'
+owner: support desk
+status: known
+reviewed: 2026-10-30
+signature: v1.eyJzdWIiOiI0NzY0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzMDk2MDAsImV4cCI6MTc5MzM5NjAwMH0.4lk4l2RHhsSe-IuBJuBSbkLumbWTs8czeldFwY3FS0o
+---
+
+<script lang="ts">
+  import SplitTable from '#lib/kb/SplitTable.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const signature = metadata.signature;
+</script>
+
+Since April, reports about dates landing on the wrong day were merged into ticket #4471.
+The export contains three distinguishable problems, not one.
+
+<SplitTable />
+
+## What the split means
+
+- **Parser:** the shared parser reads month first, while the tenant writes day first.
+- **Hint:** the booking-v3 form shows month first, but the form reads it day first. This
+  requires a different fix from the shared parser.
+- **One-day move:** the desk notes describe reports with a one-day shift. They support
+  treating these separately, but do not establish the underlying mechanism.
+
+The current KB rule folds the one-day-move reports into the parser group. Some additional
+reports have no date pair in their body; those are assigned by tenant and form rule, and
+are not counted as clean body-proven swaps.
+
+The published projection omits report subjects, report bodies, and tenant names. Tenant
+keys are pseudonymous; counts and date ranges are computed from the sanitized records.
+
+<RenderStamp {signature} />

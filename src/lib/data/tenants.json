@@ -1,0 +1,57 @@
+[
+  {
+    "id": "T01",
+    "form": "booking-v3",
+    "dayFirst": true
+  },
+  {
+    "id": "T02",
+    "form": "booking-v3",
+    "dayFirst": true
+  },
+  {
+    "id": "T03",
+    "form": "booking-v2",
+    "dayFirst": true
+  },
+  {
+    "id": "T04",
+    "form": "booking-v2",
+    "dayFirst": true
+  },
+  {
+    "id": "T05",
+    "form": "booking-v2",
+    "dayFirst": true
+  },
+  {
+    "id": "T06",
+    "form": "booking-v2",
+    "dayFirst": true
+  },
+  {
+    "id": "T07",
+    "form": "booking-v2",
+    "dayFirst": true
+  },
+  {
+    "id": "T08",
+    "form": "booking-v2",
+    "dayFirst": true
+  },
+  {
+    "id": "T09",
+    "form": "booking-v3",
+    "dayFirst": true
+  },
+  {
+    "id": "T10",
+    "form": "booking-v2",
+    "dayFirst": true
+  },
+  {
+    "id": "T11",
+    "form": "booking-v2",
+    "dayFirst": true
+  }
+]
