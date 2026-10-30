@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 · dates split by cause'
 owner: support desk
-status: known
+status: closed
 reviewed: 2026-10-30
 signature: v1.eyJzdWIiOiI0NzY0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzMDk2MDAsImV4cCI6MTc5MzM5NjAwMH0.4lk4l2RHhsSe-IuBJuBSbkLumbWTs8czeldFwY3FS0o
 ---
@@ -18,6 +18,19 @@ Since April, reports about dates landing on the wrong day were merged into ticke
 The export contains three distinguishable problems, not one.
 
 <SplitTable />
+
+## Engineering outcome
+
+The course's desk update says #4471 closed on 2026-10-05:
+
+- **Parser: fixed.** `fix(dates): parse dd/mm for eu locales`.
+- **Hint: won't fix.** The booking-v3 form was retired, not corrected.
+- **One-day move:** no separate fix is established by the update. These five reports
+  remain an overlapping symptom group within parser; closing the tracking issue does
+  not establish that the symptom was fixed.
+
+The parser issue is closed as completed. The hint and separate one-day tracking issues
+are closed as not planned. Closed does not mean every reported behavior was fixed.
 
 ## What the split means
 
