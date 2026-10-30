@@ -27,7 +27,11 @@ The export contains three distinguishable problems, not one.
 - **One-day move:** the desk notes describe reports with a one-day shift. They support
   treating these separately, but do not establish the underlying mechanism.
 
-The current KB rule folds the one-day-move reports into the parser group. Some additional
+The desk counts 379 reports under parser and 33 under hint, covering all 412 unique
+reports. The five one-day-move reports remain counted under parser, as in the exported
+desk view; the separate one-day issue documents an overlapping symptom group, not five
+additional reports. Of the 379 parser reports, 374 are outside that documented group.
+Some additional
 reports have no date pair in their body; those are assigned by tenant and form rule, and
 are not counted as clean body-proven swaps.
 

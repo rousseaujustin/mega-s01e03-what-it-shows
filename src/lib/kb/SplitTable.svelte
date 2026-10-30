@@ -14,18 +14,19 @@
       : report.channel === 'form' && tenant.form === 'booking-v3'
         ? 'hint'
         : 'parser';
-    const problem: Problem | 'unplaced' = oneDay.has(report.id) ? 'one-day' : kbCause;
-    return { ...report, kbCause, problem };
+    return { ...report, kbCause };
   });
 
   const names: Problem[] = ['parser', 'hint', 'one-day'];
   const rules: Record<Problem, string> = {
-    parser: 'Day-first tenant; not a booking-v3 form entry or a documented one-day move.',
+    parser: 'Day-first tenant; not a booking-v3 form entry. Includes the five documented one-day moves, as filed by the desk.',
     hint: 'Booking-v3 form entry from a day-first tenant; the form hint and parser use opposite date orders.',
-    'one-day': 'Identified separately in the desk notes; the observed symptom is a one-day move, not a swap.',
+    'one-day': 'Identified separately in the desk notes; these five reports are also counted under parser, not additional reports.',
   };
   const groups = names.map((problem) => {
-    const items = rows.filter((report) => report.problem === problem);
+    const items = rows.filter((report) => problem === 'one-day'
+      ? oneDay.has(report.id)
+      : report.kbCause === problem);
     const dates = items.map((report) => report.receivedAt).sort();
     const counts = (key: 'channel' | 'intakeTag') =>
       Object.entries(items.reduce<Record<string, number>>((acc, report) => {
@@ -44,7 +45,6 @@
     };
   });
   const kbTagDisagreements = rows.filter((report) => report.intakeTag !== report.kbCause).length;
-  const problemTagDisagreements = rows.filter((report) => report.intakeTag !== report.problem).length;
   const bodyKinds = Object.entries(rows.reduce<Record<string, number>>((acc, report) => {
     acc[report.bodyKind] = (acc[report.bodyKind] ?? 0) + 1;
     return acc;
@@ -72,7 +72,7 @@
   </tbody>
 </table>
 
-<p class="note">Intake disagrees with the KB's parser/hint rule for {kbTagDisagreements} reports, and with the final three-problem assignment for {problemTagDisagreements}. Body reading: {bodyKinds.map(([name, count]) => `${name} ${count}`).join(' · ')}.</p>
+<p class="note">The parser and hint groups cover all {reports.length} unique reports. The five one-day reports overlap the parser group; do not add them again. Intake disagrees with the KB's parser/hint rule for {kbTagDisagreements} reports. Body reading: {bodyKinds.map(([name, count]) => `${name} ${count}`).join(' · ')}.</p>
 
 <style>
   .sum { font-size: 1.05rem; }
